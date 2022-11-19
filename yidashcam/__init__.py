@@ -139,7 +139,7 @@ class YIDashcam():
                     self._heartbeat_timer = None
                     self._mode = None
                     raise YIDashcamConnectionException("Lost connection")
-                elif status < 0:
+                elif status < 0 and status != -23:
                     raise YIDashcamException("Bad status returned: {}".format(
                         status))
                 res_str = res_xml.find("String")
