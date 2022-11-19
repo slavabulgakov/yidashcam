@@ -40,6 +40,10 @@ for option, val_type in sorted(option_map.items(), key=lambda x: x[0].name):
         parser_option.add_argument(
             'value', type=str.lower, choices=['true', 'false'])
 
+#  Set clock
+parser_set_clock = subparsers.add_parser(
+    'setclock', help='set dashcam clock')
+
 #  Video stream
 parser_stream = subparsers.add_parser(
     'stream', help='put dashcam in mode to stream video')
@@ -87,6 +91,7 @@ if args.command is None or args.command == "config":
                 sep="\n")
 elif args.command == "stream":
     with YIDashcam() as yi:
+        yi.set_clock()
         print("Connect to video stream at: rtsp://{0.HOST}/xxx.mov".format(yi))
         print("Press enter to take video photo, or Ctrl-C to exit")
         try:
