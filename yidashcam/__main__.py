@@ -40,10 +40,6 @@ for option, val_type in sorted(option_map.items(), key=lambda x: x[0].name):
         parser_option.add_argument(
             'value', type=str.lower, choices=['true', 'false'])
 
-#  Set clock
-parser_set_clock = subparsers.add_parser(
-    'setclock', help='set dashcam clock')
-
 #  Video stream
 parser_stream = subparsers.add_parser(
     'stream', help='put dashcam in mode to stream video')
